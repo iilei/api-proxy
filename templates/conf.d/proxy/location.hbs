@@ -1,0 +1,14 @@
+{{#each proxies as |proxyConfig proxyLocationMatch|}}
+  location {{proxyLocationMatch}} {
+    if ({{slug proxyLocationMatch}}_version = "unsatisfiable_version") {
+      add_header Warning '400 - Requested version must be one of [{{ versionsJoinWith proxyConfig.upstreams ', ' }}].' always;
+      return 400 '';
+    }
+
+    proxy_pass $scheme://{{slug proxyLocationMatch}}_version;
+
+    {{#if proxyConfig.sunsets }}
+      add_header Warning {{slug proxyLocationMatch}}_sunset_message always;
+    {{/if }}
+  }
+{{/each}}
