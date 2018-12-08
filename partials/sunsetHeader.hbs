@@ -1,0 +1,8 @@
+{{~# if true ~}}
+'{{# if sunsets ~}}
+299 - Deprecated: {{ version ~}}
+; Service: {{ service ~}}
+; Recommended: {{recommended ~}}
+; Sunset: {{ UTCDate (lookup sunsets version) ~}}
+{{~/if ~}}'
+{{~/if ~}}

@@ -1,0 +1,52 @@
+{{#each proxies as |proxy key|}}
+  {{#each proxy.upstreams as |upstream version|}}
+    upstream {{slug key}}_{{ version }} {
+      {{#each upstream}}
+        server {{this}};
+      {{/each}}
+    }
+  {{/each}}
+
+  map $http_accept {{slug key}}_version {
+    # default
+    {{# if proxy.default }}
+      default {{ slug key }}_{{ proxy.default }};
+    {{/if }}
+
+    # defined versions
+    {{#each proxy.upstreams as |upstream version|}}
+      {{> versionMatch version=version }} {{ slug key }}_{{ version }};
+    {{/each}}
+
+    # unsatisfiable
+    {{> versionNoMatch upstreams=proxy.upstreams }} {{ slug key }}_unsatisfiable_version;
+  }
+
+  map $http_accept {{slug key}}_sunset_message {
+    # versions marked for sunsetting
+    {{#if proxy.sunsets }}
+      {{# ifInKeys proxy.default proxy.sunsets }}
+        {{#if (lookup proxy.sunsets proxy.default) }}
+          # Sunset header for default version {{ proxy.default }}
+          default {{#with proxy~}}
+            {{> sunsetHeader version=proxy.default service=(slug key)}};
+          {{/with}}
+        {{/if}}
+      {{/ifInKeys}}
+
+      {{#each proxy.upstreams as |upstream version|}}
+        {{# ifInKeys version ../sunsets }}
+          # Sunset header if matching version {{ version }}
+          {{> versionMatch version=version }} {{#with proxy~}}
+            {{> sunsetHeader version=version service=(slug key)}};
+          {{/with}}
+        {{ else }}
+          # No sunset header if matching version {{ version }}
+          {{> versionMatch version=version }} '';
+        {{/ifInKeys}}
+      {{/each}}
+    {{else}}
+      default '';
+    {{/if}}
+  }
+{{/each}}

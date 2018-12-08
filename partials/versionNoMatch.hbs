@@ -1,0 +1,11 @@
+{{# if upstreams ~}}
+~*(application/vnd\.
+  {{~#if namespace ~}}
+    {{ namespace }}
+  {{~ else ~}}
+    \S+
+  {{~/if~}}
+  \.v|version=v?)(?!(
+    {{~ versionsPipeDelim upstreams ~}}
+  )\b)
+{{~/if }}

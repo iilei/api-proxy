@@ -1,0 +1,9 @@
+{{# if version ~}}
+~*(application/vnd\.
+  {{~#if namespace ~}}
+    {{ namespace }}
+  {{~ else ~}}
+    \S+
+  {{~/if~}}
+  \.v|version=v?){{~ stripV version ~}}\b
+{{~/if }}

@@ -1,0 +1,36 @@
+proxies:
+  /geocode/:
+    default: v1
+    upstreams:
+      # version token v1
+      v1:
+        {{- range (split " " .GEOCODE_V1_UPSTREAMS)}}
+        - {{ . }}
+        {{- end }}
+      v2:
+        {{- range (split " " .GEOCODE_V2_UPSTREAMS)}}
+        - {{ . }}
+        {{- end }}
+    # optional: rewrite
+    rewrite:
+      - "/v.*"
+      - ""
+    # optional: recommended
+    recommended: v2
+    # optional: sunsets
+    # sunsets must adhere to "%Y-%m-%d %H:%M" -- will be converted to RFC 1123
+    sunsets:
+      v1: "2020-11-23 23:59"
+  # another service - no scheduled sunset for this one
+  /another/:
+    default: v2
+    upstreams:
+      # version token v1
+      v1:
+        {{- range (split " " .ANOTHER_V1_UPSTREAMS)}}
+        - {{ . }}
+        {{- end }}
+      v2:
+        {{- range (split " " .ANOTHER_V2_UPSTREAMS)}}
+        - {{ . }}
+        {{- end }}
