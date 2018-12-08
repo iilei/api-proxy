@@ -6,6 +6,6 @@
     \S+
   {{~/if~}}
   \.v|version=v?)(?!(
-    {{~ versionsPipeDelim upstreams ~}}
+    {{~ versionsJoinWith upstreams '|' ~}}
   )\b)
 {{~/if }}

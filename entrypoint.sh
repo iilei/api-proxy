@@ -13,4 +13,4 @@ hbs -H '/helpers/**.js' \
     --output dist/ \
     'templates/**/*.hbs'
 
-cat   /dist/upstreams.conf
+nginxbeautifier -s 4 -r /dist/
