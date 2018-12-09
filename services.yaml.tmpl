@@ -11,16 +11,12 @@ proxies:
         {{- range (split " " .GEOCODE_V2_UPSTREAMS)}}
         - {{ . }}
         {{- end }}
-    # optional: rewrite
-    rewrite:
-      - "/v.*"
-      - ""
-    # optional: recommended
-    recommended: v2
     # optional: sunsets
-    # sunsets must adhere to "%Y-%m-%d %H:%M" -- will be converted to RFC 1123
+    # will be converted to RFC 1123
     sunsets:
-      v1: "2020-11-23 23:59"
+      v1: 2020-11-23T22:59:00.000Z
+    # if sunsets are defined, a recommended versin must be set
+    recommended: v2
   # another service - no scheduled sunset for this one
   /another/:
     default: v2

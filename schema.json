@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "proxies": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^(?=.*[a-z])[a-z0-9/-]*$": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["default", "upstreams"],
+          "dependencies": {
+              "sunsets": ["recommended"]
+          },
+          "properties": {
+            "sunsets": {
+              "patternProperties": {
+                "^v?\\d+$": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            },
+            "recommended": {
+              "type": "string",
+              "pattern": "^v?\\d+$"
+            },
+            "default": {
+              "type": "string",
+              "pattern": "^v?\\d+$"
+            },
+            "upstreams": {
+              "additionalProperties": false,
+              "patternProperties": {
+                "^v?\\d+$": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

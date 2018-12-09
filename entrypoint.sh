@@ -5,6 +5,9 @@ export NODE_PATH=/usr/lib/node_modules
 # parse services.yaml.tmpl by envsubst and write to services.json
 envtpl < services.yaml.tmpl | yq -M  -r '.' > services.json
 
+# TBD
+# ajv validate -s schema.json -d services.json
+
 
 hbs -H '/helpers/**.js' \
     -P '/partials/**.hbs' \

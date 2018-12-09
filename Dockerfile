@@ -6,7 +6,7 @@ RUN apk update \
     && pip install yq \
     && rm -rf /var/cache/apk/*
 
-RUN npm i -g "hbs-cli" "@sindresorhus/slugify" "nginxbeautifier"
+RUN npm i -g "hbs-cli" "@sindresorhus/slugify" "nginxbeautifier" "ajv-cli"
 
 COPY . .
 
