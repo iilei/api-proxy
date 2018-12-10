@@ -15,13 +15,13 @@ UTCDate.register = function (Handlebars) {
           `To generate a valid Date, generate a valid date-time:`,
           `>  node -e "console.log(new Date('${dateExample()}'))" `,
           `Or:`,
-          `    ${new Date(dateExample()).toUTCString()}`,
+          `    ${new Date(dateExample()).toGMTString()}`,
           ].join('\n')
         );
       }
 
       // toUTCString ~= RFC 1123 - in respect to HTTP Date Header convention
-      return (new Date(value)).toISOString();
+      return (new Date(value)).toGMTString();
     });
 };
 

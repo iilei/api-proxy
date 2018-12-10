@@ -2,7 +2,7 @@
 '{{# if sunsets ~}}
 299 - Deprecated: {{ version ~}}
 ; Service: {{ service ~}}
-; Recommended: {{recommended ~}}
 ; Sunset: {{ UTCDate (lookup sunsets version) ~}}
+{{~# ifInKeys recommended upstreams }}; Recommended: {{recommended ~}}{{/ifInKeys~}}
 {{~/if ~}}'
 {{~/if ~}}
