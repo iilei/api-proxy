@@ -21,31 +21,4 @@
     # unsatisfiable
     {{> versionNoMatch upstreams=proxyConfig.upstreams }} unsatisfiable_version;
   }
-
-  {{#if proxyConfig.sunsets }}
-    # versions marked for sunset (End of Life / API Deprecation)
-    map $http_accept {{slug proxyLocationMatch}}_sunset_message {
-      {{# ifInKeys proxyConfig.default proxyConfig.sunsets }}
-        {{#if (lookup proxyConfig.sunsets proxyConfig.default) }}
-          # Sunset header for default version {{ proxyConfig.default }}
-          default {{#with proxyConfig~}}
-            {{> sunsetHeader version=proxyConfig.default service=(slug proxyLocationMatch)}};
-          {{/with}}
-        {{/if}}
-      {{/ifInKeys}}
-
-      {{#each proxyConfig.upstreams as |upstream version|}}
-        {{# ifInKeys version ../sunsets }}
-          # Sunset header if matching version {{ version }}
-          {{> versionMatch version=version }} {{#with proxyConfig~}}
-            {{> sunsetHeader version=version service=(slug proxyLocationMatch)}};
-          {{/with}}
-        {{ else }}
-          # No sunset header if matching version {{ version }}
-          {{> versionMatch version=version }} '';
-        {{/ifInKeys}}
-      {{/each}}
-    }
-  {{/if}}
-
 {{/each}}

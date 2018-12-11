@@ -1,9 +1,13 @@
-FROM subfuzion/envtpl:latest as services
+# FROM subfuzion/envtpl:latest as services
+FROM nginx:1.15.7-alpine
+
+COPY --from=subfuzion/envtpl:latest /usr/local/bin/envtpl /bin
 
 RUN apk update \
     && apk upgrade \
-    && apk add --no-cache jq py-pip bash openssl curl gnupg nodejs \
+    && apk add --update --no-cache jq py-pip bash openssl curl gnupg nodejs nodejs-npm \
     && pip install yq \
+    && pip install --upgrade pip \
     && rm -rf /var/cache/apk/*
 
 RUN npm i -g "hbs-cli@^1.3.0" \
@@ -13,7 +17,6 @@ RUN npm i -g "hbs-cli@^1.3.0" \
 
 COPY . .
 
+ENTRYPOINT ["/entrypoint.sh"]
 
-# ENTRYPOINT ["/entrypoint.sh"]
-
-# CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
