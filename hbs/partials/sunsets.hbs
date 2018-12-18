@@ -1,7 +1,7 @@
 {{#each proxies as |proxyConfig proxyLocationMatch|}}
   {{#if proxyConfig.sunsets }}
     # versions marked for sunset (End of Life / API Deprecation)
-    map $http_accept {{slug proxyLocationMatch}}_sunset_message {
+    map $http_accept ${{slug proxyLocationMatch}}_sunset_message {
       {{# ifInKeys proxyConfig.default proxyConfig.sunsets }}
         {{#if (lookup proxyConfig.sunsets proxyConfig.default) }}
           # Sunset header for default version {{ proxyConfig.default }}

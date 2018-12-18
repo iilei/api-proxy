@@ -7,7 +7,7 @@
     }
   {{/each}}
 
-  map $http_accept {{slug proxyLocationMatch}}_version {
+  map $http_accept ${{slug proxyLocationMatch}}_version {
     # default
     {{# if proxyConfig.default }}
       default {{ slug proxyLocationMatch }}_{{ proxyConfig.default }};

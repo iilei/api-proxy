@@ -1,4 +1,3 @@
-# FROM subfuzion/envtpl:latest as services
 FROM nginx:1.15.7-alpine
 
 COPY --from=subfuzion/envtpl:latest /usr/local/bin/envtpl /bin
@@ -18,5 +17,3 @@ RUN npm i -g "hbs-cli@^1.3.0" \
 COPY . .
 
 ENTRYPOINT ["/entrypoint.sh"]
-
-CMD ["nginx", "-g", "daemon off;"]

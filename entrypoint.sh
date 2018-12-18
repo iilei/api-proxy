@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 set -e
 
 export NODE_PATH=/usr/lib/node_modules
@@ -13,17 +13,27 @@ echo "Result:"
 jq '.' services.json
 
 set -x
-ajv validate -s schema.json -d services.json
+ajv validate -s /hbs/schema.json -d services.json
 
-hbs -H '/helpers/**.js' \
-    -P '/partials/**.hbs' \
-    --data '/services.json' \
-    -e conf \
-    --output dist/ \
-    'templates/**/*.hbs'
+# copy
+cp -rf /nginx/* /etc/nginx/
+rm /etc/nginx/**/*.hbs
 
-nginxbeautifier -s 4 -r /dist/
+# as hbs flattens the target directory structure; walk through tree
+dirs=$(find nginx/** -type d)
+dirs[${#dirs[@]}]='nginx'
 
-cp /dist/* /etc/nginx/
+for dir in "${dirs[@]}"; do
+hbs -H '/hbs/helpers/**.js' \
+    -P '/hbs/partials/**.hbs' \
+    --data /services.json \
+    --extension conf \
+    --output /etc/$dir/ \
+    /$dir/*.hbs
+done
+
+nginxbeautifier -s 4 -r /etc/nginx/
 
 nginx -t
+
+nginx -g 'daemon off;'

@@ -1,0 +1,6 @@
+.idea
+.env.example
+.gitignore
+.editorconfig
+Readme.md
+node_modules
