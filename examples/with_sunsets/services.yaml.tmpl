@@ -11,6 +11,10 @@ proxies:
         {{- range (split " " .GEOCODE_V2_UPSTREAMS)}}
         - {{ . }}
         {{- end }}
+      v3:
+        {{- range (split " " .GEOCODE_V3_UPSTREAMS)}}
+        - {{ . }}
+        {{- end }}
     # optional: sunsets
     # will be converted to RFC 1123
     sunsets:

@@ -1,7 +1,7 @@
 {{#each proxies as |proxyConfig proxyLocationMatch|}}
   location ~ ^{{proxyLocationMatch}}? {
     if (${{slug proxyLocationMatch}}_version = "unsatisfiable_version") {
-      add_header Warning '400 - Requested version must be one of [{{ versionsJoinWith proxyConfig.upstreams ', ' }}].' always;
+      add_header Warning {{> unsatisfiableVersion service=(slug proxyLocationMatch) }} always;
       return 400 '';
     }
 

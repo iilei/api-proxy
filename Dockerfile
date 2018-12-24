@@ -9,10 +9,11 @@ RUN apk update \
     && pip install --upgrade pip \
     && rm -rf /var/cache/apk/*
 
-RUN npm i -g "hbs-cli@^1.3.0" \
-    "@sindresorhus/slugify@^0.6.0" \
-    "ajv-cli@^3.0.0" \
-    "nginxbeautifier@1.0.18"
+RUN npm i -g "hbs-cli@1.3.0" \
+    "@sindresorhus/slugify@0.6.0" \
+    "ajv-cli@3.0.0" \
+    "nginxbeautifier@1.0.18" \
+    "humanize-list@1.0.1"
 
 COPY . .
 
