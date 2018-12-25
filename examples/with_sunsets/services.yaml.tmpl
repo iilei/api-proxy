@@ -4,15 +4,15 @@ proxies:
     upstreams:
       # version token v1
       v1:
-        {{- range (split " " .GEOCODE_V1_UPSTREAMS)}}
+        {{- range (split " " .V1_UPSTREAMS)}}
         - {{ . }}
         {{- end }}
       v2:
-        {{- range (split " " .GEOCODE_V2_UPSTREAMS)}}
+        {{- range (split " " .V2_UPSTREAMS)}}
         - {{ . }}
         {{- end }}
       v3:
-        {{- range (split " " .GEOCODE_V3_UPSTREAMS)}}
+        {{- range (split " " .V3_UPSTREAMS)}}
         - {{ . }}
         {{- end }}
     # optional: sunsets
