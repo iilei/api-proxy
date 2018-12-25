@@ -1,5 +1,5 @@
 {{#each proxies as |proxyConfig proxyLocationMatch|}}
-  location ~ ^{{proxyLocationMatch}}? {
+  location ~ ^{{proxyLocationMatch}} {
     if (${{slug proxyLocationMatch}}_version = "unsatisfiable_version") {
       add_header Warning {{> unsatisfiableVersion service=(slug proxyLocationMatch) }} always;
       return 400 '';
@@ -12,7 +12,7 @@
     # or https://distinctplace.com/2017/04/19/nginx-resolver-explained/
     # for why a trailing slash at the end of proxy_pass does not work when a
     # variable as the parameter for proxy_pass is used.
-    rewrite ^{{proxyLocationMatch}}?(.*) /$1 break;
+    rewrite ^{{proxyLocationMatch}}(.*) /$1 break;
 
     proxy_pass $scheme://${{slug proxyLocationMatch}}_version;
 
