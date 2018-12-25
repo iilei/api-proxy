@@ -1,0 +1,18 @@
+version: '3.2'
+
+services:
+  api:
+    image: iil3i/api-proxy:latest
+    environment:
+      - V2_UPSTREAM=foo_service_v2
+      - V3_UPSTREAM=foo_service_v3
+    volumes:
+      - ./services.yaml.tmpl:/services.yaml.tmpl
+    ports:
+      - "1731:80"
+
+  foo_service_v2:
+    image: nginxdemos/hello:plain-text
+  foo_service_v3:
+    image: nginxdemos/hello:plain-text
+

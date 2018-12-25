@@ -1,0 +1,22 @@
+version: '3.2'
+
+services:
+  api:
+    image: iil3i/api-proxy:latest
+    environment:
+      - GEO_V2_UPSTREAM=geo_service_v2
+      - TAX_V2_UPSTREAM=tax_service_v2
+      - TAX_V3_UPSTREAM=tax_service_v3
+    volumes:
+      - ./services.yaml.tmpl:/services.yaml.tmpl
+    ports:
+      - "1731:80"
+
+  geo_service_v2:
+    image: nginxdemos/hello:plain-text
+
+  tax_service_v2:
+    image: nginxdemos/hello:plain-text
+  tax_service_v3:
+    image: nginxdemos/hello:plain-text
+

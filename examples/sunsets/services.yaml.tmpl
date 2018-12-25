@@ -1,0 +1,18 @@
+proxies:
+  /:
+    default: v1
+    upstreams:
+      v1:
+        - {{ .V1_UPSTREAM }}
+      v2:
+        - {{ .V2_UPSTREAM }}
+      v3:
+        - {{ .V3_UPSTREAM }}
+
+    # optional: sunsets
+    # will be converted to RFC 1123
+    sunsets:
+      v1: "2020-11-23T22:59:00.000Z"
+      v2: "2021-11-23T22:59:00.000Z"
+    # if sunsets are defined, a recommended version must be set
+    recommended: v3

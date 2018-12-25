@@ -12,41 +12,26 @@ services:
     ports:
       - "1731:80"
 
+  # upstreams for v1
   foo_service_v1_u1:
     image: nginxdemos/hello:plain-text
-    environment:
-    - MSG=foo v1_u1
   foo_service_v1_u2:
     image: nginxdemos/hello:plain-text
-    environment:
-    - MSG=foo v1_u2
   foo_service_v1_u3:
     image: nginxdemos/hello:plain-text
-    environment:
-    - MSG=foo v1_u3
 
+  # upstreams for v2
   foo_service_v2_u1:
     image: nginxdemos/hello:plain-text
-    environment:
-    - MSG=foo v2_u1
   foo_service_v2_u2:
     image: nginxdemos/hello:plain-text
-    environment:
-    - MSG=foo v2_u2
   foo_service_v2_u3:
     image: nginxdemos/hello:plain-text
-    environment:
-    - MSG=foo v2_u3
 
+  # upstreams for v3
   foo_service_v3_u1:
     image: nginxdemos/hello:plain-text
-    environment:
-    - MSG=foo v3_u1
   foo_service_v3_u2:
     image: nginxdemos/hello:plain-text
-    environment:
-    - MSG=foo v3_u2
   foo_service_v3_u3:
     image: nginxdemos/hello:plain-text
-    environment:
-    - MSG=foo v3_u3

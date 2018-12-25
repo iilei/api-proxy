@@ -1,0 +1,8 @@
+proxies:
+  /:
+    default: v3
+    upstreams:
+      v2:
+        - {{ .V2_UPSTREAM }}
+      v3:
+        - {{ .V3_UPSTREAM }}
