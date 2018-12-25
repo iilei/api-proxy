@@ -6,15 +6,14 @@ export NODE_PATH=/usr/lib/node_modules
 # parse services.yaml.tmpl by envsubst and write to services.json
 echo "Utilizing 'envtpl' and 'yq' to generate services.json ..."
 set -x
-envtpl < services.yaml.tmpl | yq -M  -r '.' > services.json
+envtpl < services.yaml.tmpl | yq -M  -r '.' > services.raw.json
+node /hbs/validate.js >| /services.json
 set +x
 
 echo "Result:"
 jq '.' services.json
 
 set -x
-ajv validate -s /hbs/schema.json -d services.json
-
 # copy
 cp -rf /nginx/* /etc/nginx/
 rm /etc/nginx/**/*.hbs
