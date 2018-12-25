@@ -28,7 +28,7 @@ Check the examples:
 **Please note:** The end-of-life date is solely exposed but will not be used to disable the respective upstream.
 Hence, to actually turn off old versions they must be taken off from the services.yaml.tpl and a restart is needed.
 
-Check [sunsetHeader.hbs](hbs/partials/sunsetHeader.hbs) and [unsatisfiableVersion.hbs](hbs/unsatisfiableVersion.hbs)
+Check [sunsetHeader.hbs](hbs/partials/sunsetHeader.hbs) and [unsatisfiableVersion.hbs](hbs/partials/unsatisfiableVersion.hbs)
 to learn how these messages are composed.
 
 ## Advanced config
