@@ -12,7 +12,7 @@
     # or https://distinctplace.com/2017/04/19/nginx-resolver-explained/
     # for why a trailing slash at the end of proxy_pass does not work when a
     # variable as the parameter for proxy_pass is used.
-    rewrite ^{{proxyLocationMatch}}(.*) /$1 break;
+    rewrite ^{{proxyLocationMatch}}(.*) {{proxyConfig.rewrite}} break;
 
     proxy_pass $scheme://${{slug proxyLocationMatch}}_version;
 
