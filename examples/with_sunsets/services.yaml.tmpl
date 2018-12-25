@@ -1,5 +1,5 @@
 proxies:
-  /geocode/:
+  /:
     default: v1
     upstreams:
       # version token v1
@@ -19,5 +19,6 @@ proxies:
     # will be converted to RFC 1123
     sunsets:
       v1: "2020-11-23T22:59:00.000Z"
+      v2: "2021-11-23T22:59:00.000Z"
     # if sunsets are defined, a recommended version must be set
-    recommended: v2
+    recommended: v3
