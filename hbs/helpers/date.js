@@ -1,7 +1,7 @@
-var UTCDate = function () {};
+var DateHelper = function () {};
 
-UTCDate.register = function (Handlebars) {
-    Handlebars.registerHelper('UTCDate', function(value, block) {
+DateHelper.register = function (Handlebars) {
+    Handlebars.registerHelper('date', function(value, block) {
       // toGMTString ~= RFC 1123 - in respect to HTTP Date Header convention
       const result = (new Date(value)).toGMTString() || "Invalid Date";
 
@@ -19,4 +19,4 @@ UTCDate.register = function (Handlebars) {
     });
 };
 
-module.exports = UTCDate;
+module.exports = DateHelper;
