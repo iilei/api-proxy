@@ -1,7 +1,9 @@
 {{~# if true ~}}
 '{{# if sunsets ~}}
 299 - Deprecated: {{ version ~}}
+{{~#if service}}
 ; Service: {{ service ~}}
+{{~/if ~}}
 ; Sunset: {{ date (lookup sunsets version) ~}}
 {{~# ifInKeys recommended upstreams }}; Recommended: {{recommended ~}}{{/ifInKeys~}}
 {{~/if ~}}'
