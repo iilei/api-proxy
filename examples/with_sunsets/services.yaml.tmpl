@@ -21,16 +21,3 @@ proxies:
       v1: "2020-11-23T22:59:00.000Z"
     # if sunsets are defined, a recommended version must be set
     recommended: v2
-  # another service - no scheduled sunset for this one
-  /another/:
-    default: v2
-    upstreams:
-      # version token v1
-      v1:
-        {{- range (split " " .ANOTHER_V1_UPSTREAMS)}}
-        - {{ . }}
-        {{- end }}
-      v2:
-        {{- range (split " " .ANOTHER_V2_UPSTREAMS)}}
-        - {{ . }}
-        {{- end }}
