@@ -2,7 +2,7 @@
   location ~ ^{{proxyLocationMatch}} {
     if (${{slug proxyLocationMatch}}_version = "unsatisfiable_version") {
       add_header Warning {{> unsatisfiableVersion service=(slug proxyLocationMatch) }} always;
-      return 400 '';
+      return 410;
     }
 
     proxy_set_header Host $host;
