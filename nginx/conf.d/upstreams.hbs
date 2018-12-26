@@ -10,7 +10,7 @@
   map $http_accept ${{slug proxyLocationMatch}}_version {
     # default
     {{# if proxyConfig.default }}
-      default {{ slug proxyLocationMatch }}_{{ proxyConfig.default }};
+      "*/*" {{ slug proxyLocationMatch }}_{{ proxyConfig.default }};
     {{/if }}
 
     # defined versions
@@ -19,6 +19,6 @@
     {{/each}}
 
     # unsatisfiable
-    {{> versionNoMatch upstreams=proxyConfig.upstreams }} unsatisfiable_version;
+    default unsatisfiable_version;
   }
 {{/each}}
