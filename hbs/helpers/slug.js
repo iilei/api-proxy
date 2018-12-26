@@ -1,9 +1,9 @@
 const slugify = require('@sindresorhus/slugify');
 
-var slug = function () {};
+const slug = function () {};
 
 slug.register = function (Handlebars) {
-    Handlebars.registerHelper('slug', function(value, block) {
+    Handlebars.registerHelper('slug', function(value) {
         return slugify(value, {separator: '_'})
     });
 };
