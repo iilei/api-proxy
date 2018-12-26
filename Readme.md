@@ -3,6 +3,8 @@
 A docker image with handebars / yq / yq and envsubst which is utilized for
 generating nginx configuration based on env vars and a mounted `services.yaml.tmpl` File.
 
+Get it [on dockerhub](https://cloud.docker.com/repository/docker/iil3i/api-proxy)
+
 ## How it works
 
 For each version of your services, environment variables which provide
@@ -59,5 +61,4 @@ docker run \
 ## Further customization
 
 If you want custom templates, simply mount your own `hbs` and  `nginx` volumes
-
 
