@@ -9,7 +9,7 @@
         "^\/([a-z0-9/-]+\/)?$": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["default", "upstreams", "rewrite"],
+          "required": ["upstreams", "rewrite", "namespace"],
           "dependencies": {
               "sunsets": ["recommended"]
           },
@@ -43,6 +43,10 @@
                   }
                 }
               }
+            },
+            "namespace": {
+              "type": "string",
+              "default": "\\S+"
             },
             "rewrite": {
               "type": "string",

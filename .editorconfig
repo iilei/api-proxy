@@ -19,3 +19,6 @@ max_line_length = 0
 
 [*.html]
 indent_size = 4
+
+[*.hbs]
+insert_final_newline = false

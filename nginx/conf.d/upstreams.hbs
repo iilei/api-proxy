@@ -15,7 +15,7 @@
 
     # defined versions
     {{#each proxyConfig.upstreams as |upstream version|}}
-      {{> versionMatch version=version }} {{ slug proxyLocationMatch }}_{{ version }};
+      {{> versionMatch version=version namespace=../namespace }} {{ slug proxyLocationMatch }}_{{ version }};
     {{/each}}
 
     # unsatisfiable

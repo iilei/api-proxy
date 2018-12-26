@@ -1,0 +1,11 @@
+proxies:
+  /:
+    # intentionally no default set
+    # see https://github.com/interagent/http-api-design/blob/master/en/foundations/require-versioning-in-the-accepts-header.md#require-versioning-in-the-accepts-header
+    # regex metacharacters should be escaped as this gets evaluated as a matching pattern by nginx
+    namespace: my-app\.acme\.inc
+    upstreams:
+      v2:
+        - {{ .V2_UPSTREAM }}
+      v3:
+        - {{ .V3_UPSTREAM }}
