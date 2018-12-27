@@ -15,8 +15,6 @@ HTTP/1.1 200 OK
 ```
 
 If you dont't provide the accept header as desired, the request will fail.
-You should consider favoring strict over permissive if possible.
-See [interagent/http-api-design](https://github.com/interagent/http-api-design/blob/master/en/foundations/require-versioning-in-the-accepts-header.md#require-versioning-in-the-accepts-header) guide
 
 ```
 > curl -X GET http://localhost:1731/ -H 'Accept: application/vnd.my-app-acme.inc.v3+txt' -I

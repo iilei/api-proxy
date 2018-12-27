@@ -1,6 +1,5 @@
 proxies:
   /:
-    default: v1
     upstreams:
       v1:
         - {{ .V1_UPSTREAM }}
@@ -8,7 +7,6 @@ proxies:
         - {{ .V2_UPSTREAM }}
       v3:
         - {{ .V3_UPSTREAM }}
-
     # optional: sunsets
     # will be converted to RFC 1123
     sunsets:

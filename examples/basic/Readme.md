@@ -1,4 +1,7 @@
-# Basic
+# Basic with default set
+
+*Note:* You should consider favoring strict over permissive if possible.
+See [interagent/http-api-design](https://github.com/interagent/http-api-design/blob/master/en/foundations/require-versioning-in-the-accepts-header.md#require-versioning-in-the-accepts-header) guide
 
 If the requested version has no corresponding upstream, you will receive a message like the following via the response headers:
 

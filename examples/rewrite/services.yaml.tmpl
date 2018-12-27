@@ -1,12 +1,10 @@
 proxies:
   /geo/:
-    default: v2
     rewrite: "/geocoding-service/$1"
     upstreams:
       v2:
         - {{ .GEO_V2_UPSTREAM }}
   /tax/:
-    default: v2
     upstreams:
       v2:
         - {{ .TAX_V2_UPSTREAM }}
