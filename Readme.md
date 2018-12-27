@@ -88,7 +88,7 @@ docker run \
   --env-file=./.env \
   -v `pwd`/services.yaml.tmpl:/services.yaml.tmpl \
   -p 1731:80 \
-  api-proxy
+  iil3i/api-proxy:0.0.1.pre-release-4
 ```
 
 ## Further customization
