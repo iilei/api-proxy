@@ -58,7 +58,10 @@ Check the examples:
 * [sunsets](examples/sunsets) `docker-compose --file examples/sunsets/docker-compose.yml up`
 
 **Please note:** The end-of-life date is solely exposed but will not be used to disable the respective upstream.
-Hence, to actually turn off old versions they must be taken off from the services.yaml.tpl and a restart is needed.
+Hence, to actually turn off old versions they must be taken off from the services.yaml.tpl and a rebuild is needed.
+
+If you use this container just for building the nginx config itself and sync it with another container that runs `nginx:1.15.7-alpine`,
+you just need to sync the newly created config and do a `nginx -s reload`.
 
 Check [sunsetHeader.hbs](hbs/partials/sunsetHeader.hbs) and [unsatisfiableVersion.hbs](hbs/partials/unsatisfiableVersion.hbs)
 to learn how these messages are composed.

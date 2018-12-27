@@ -35,4 +35,5 @@ nginxbeautifier -s 4 -r /etc/nginx/
 
 nginx -t
 
+# TODO: add possibility to exit here after a cp -rf /etc/nginx/ /dist  without actually running nginx
 nginx -g 'daemon off;'
