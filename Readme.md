@@ -8,7 +8,7 @@ Get it [on dockerhub](https://cloud.docker.com/repository/docker/iil3i/api-proxy
 ## Motivation: Versioning for public APIs
 
 In the context of Lean Development it is often discussed where to draw the *yagni*-Line: you want to ship early, and for the first version,
-why worry about how you are going to deal with breaking changes that *might* occur at some point in time in the future? It is consuming and
+why worry about how you are going to deal with breaking changes that *might* occur at some point in time in the future? It is time consuming and
 it might lead to a less forgiving API concept than needed at the time of the first roll-out.
 
 On the other hand, setting clear boundaries for communication between clients and your public api from the beginning comes with the benefit
