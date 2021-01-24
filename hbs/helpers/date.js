@@ -8,13 +8,13 @@ DateHelper.register = function (Handlebars) {
       if (result === "Invalid Date") {
         throw new Error([
           `Invalid Date provded: "${value}"`,
-          `To generate a valid Date, generate a valid date-time:`,
-          `>  node -e "console.log(new Date('YYYY-MM-DD'))" `,
+          `To generate a valid Date:`,
+          `>  node -e "console.log(new Date('${(new Date()).toGMTString()}').toGMTString())" `,
           `Or:`,
           `    ${new Date().toGMTString()}`,
           ].join('\n')
         );
-      }
+      };
       return result;
     });
 };

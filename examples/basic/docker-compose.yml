@@ -2,7 +2,8 @@ version: '3.2'
 
 services:
   api:
-    image: iil3i/api-proxy:0.0.1.pre-release-4
+    build:
+      context: ../../
     environment:
       - V2_UPSTREAM=foo_service_v2
       - V3_UPSTREAM=foo_service_v3
